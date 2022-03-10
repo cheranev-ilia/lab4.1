@@ -1,0 +1,63 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:lab4._1.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="450" d:DesignHeight="450"
+        x:Class="lab4._1.Views.MainWindow"
+        Icon="/Assets/2.ico"
+        Title="RomanCalc"
+		Height="450" Width="450">
+
+    <Design.DataContext>
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+
+	<Window.Styles>
+		<Style Selector="Button">
+			<Setter Property="Foreground" Value="White" />
+			<Setter Property="BorderThickness" Value="3" />
+			<Setter Property="Background" Value="Black" />
+			<Setter Property="BorderBrush" Value="#FFFFFFFF" />
+			<Setter Property="Height" Value="110" />
+			<Setter Property="Width" Value="110" />
+			<Setter Property="FontSize" Value="36" />
+		</Style>
+	</Window.Styles>
+
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="120" ></RowDefinition>
+			<RowDefinition Height="*"></RowDefinition>
+		</Grid.RowDefinitions>
+		<StackPanel >
+			<TextBox Text="{Binding TextBoxText}" Height="120" IsHitTestVisible="False" Focusable="False" IsUndoEnabled="False" BorderBrush="White" FontSize="50" Background="White"/>
+		</StackPanel>
+		<Grid Grid.Row="1">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="auto"></RowDefinition>
+				<RowDefinition Height="auto"></RowDefinition>
+				<RowDefinition Height="*"></RowDefinition>
+			</Grid.RowDefinitions>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition></ColumnDefinition>
+				<ColumnDefinition></ColumnDefinition>
+				<ColumnDefinition></ColumnDefinition>
+				<ColumnDefinition></ColumnDefinition>
+			</Grid.ColumnDefinitions>
+			<Button Name="btn1" Command="{Binding OnClickCommand}" CommandParameter="I" Grid.Row="0" Grid.Column="0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">I</Button>
+			<Button Name="btn2" Command="{Binding OnClickCommand}" CommandParameter="V" Grid.Row="1" Grid.Column="0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">V</Button>
+			<Button Name="btn3" Command="{Binding OnClickCommand}" CommandParameter="X" Grid.Row="2" Grid.Column="0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">X</Button>
+			<Button Name="btn4" Command="{Binding OnClickCommand}" CommandParameter="L" Grid.Row="0" Grid.Column="1" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">L</Button>
+			<Button Name="btn5" Command="{Binding OnClickCommand}" CommandParameter="C" Grid.Row="1" Grid.Column="1" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">C</Button>
+			<Button Name="btn6" Command="{Binding OnClickCommand}" CommandParameter="D" Grid.Row="2" Grid.Column="1" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">D</Button>
+			<Button Name="btn7" Command="{Binding OnClickCommand}" CommandParameter="M" Grid.Row="0" Grid.Column="2" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">M</Button>
+			<Button Name="btn9" Command="{Binding OnClickOper}" IsEnabled="{Binding IsOperButtonEnable}" Grid.Row="1" Grid.Column="2" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" CommandParameter="+">+</Button>
+			<Button Name="btn11" Command="{Binding OnClickOper}" IsEnabled="{Binding IsOperButtonEnable}" Grid.Row="2" Grid.Column="2" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" CommandParameter="-">-</Button>
+			<Button Name="btn8" Command="{Binding OnClickOper}" IsEnabled="{Binding IsOperButtonEnable}" Grid.Row="0" Grid.Column="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" CommandParameter="*">*</Button>
+			<Button Name="btn10" Command="{Binding OnClickOper}" IsEnabled="{Binding IsOperButtonEnable}" Grid.Row="1" Grid.Column="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" CommandParameter="/">/</Button>
+			<Button Name="btn12" Command="{Binding OnClickEqual}" IsEnabled="{Binding IsOperButtonEnable}" Grid.Row="2" Grid.Column="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">=</Button>
+		</Grid>
+	</Grid>
+
+</Window>
